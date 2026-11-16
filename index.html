@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 💛 TAB TITLE -->
+<title>Happy Birthday, Alina 💛</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   🧈  BUTTER YELLOW PALETTE & BASE
+   ============================================================ */
+:root{
+  --butter:      #FFE8A3;
+  --butter-soft: #FFF6C9;
+  --butter-deep: #F7C948;
+  --honey:       #E0A93B;
+  --apricot:     #FFD8A8;
+  --cream:       #FFFCF0;
+  --ink:         #6B5A3E;
+  --ink-soft:    #A8916A;
+  --white:       #ffffff;
+  --shadow:      0 30px 60px -30px rgba(200,160,60,.45);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1100px 620px at 8% -8%,  #FFF3C4 0%, transparent 62%),
+    radial-gradient(900px 520px at 95% 2%,   #FFEEB0 0%, transparent 58%),
+    radial-gradient(1000px 700px at 50% 108%,#FFE6B6 0%, transparent 60%),
+    var(--cream);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* soft dotted texture */
+body::after{
+  content:"";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .38;
+  background-image: radial-gradient(rgba(230,190,90,.30) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 85%);
+}
+
+.page{
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* ============================================================
+   🎁  ENTRY OVERLAY (starts the music)
+   ============================================================ */
+.entry{
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  background:
+    radial-gradient(900px 600px at 50% 30%, #FFF7D6 0%, transparent 70%),
+    linear-gradient(160deg, #FFF3C4, #FFE8A3 55%, #FFDCA0);
+  transition: opacity .9s ease, visibility .9s ease;
+}
+.entry.hide{ opacity: 0; visibility: hidden; pointer-events: none; }
+
+.entry-inner{
+  max-width: 460px;
+  padding: clamp(30px, 7vw, 58px) clamp(24px, 6vw, 54px);
+  border-radius: 36px;
+  background: rgba(255,255,255,.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow:
+    0 46px 90px -46px rgba(200,160,60,.75),
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+.entry-inner .gift{
+  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  display: block;
+  margin-bottom: 10px;
+  animation: bob 3.2s ease-in-out infinite;
+}
+.entry-inner h2{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
+  font-weight: 400;
+  margin: 0 0 10px;
+  background: linear-gradient(115deg, #F2B01E, #E0952A 55%, #FFD24D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.entry-inner p{
+  margin: 0 0 26px;
+  font-size: clamp(.86rem, 2.5vw, .97rem);
+  line-height: 1.8;
+  font-weight: 500;
+  color: #8E7845;
+}
+.entry-inner .hint-small{
+  margin: 18px 0 0;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #B39A5E;
+}
+
+/* ============================================================
+   🎈  FLOATING GLYPHS SKY
+   ============================================================ */
+.sky{ position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.sky span{
+  position: absolute;
+  bottom: -60px;
+  animation-name: rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 4px 10px rgba(220,170,60,.28));
+}
+@keyframes rise{
+  0%   { transform: translateY(0) rotate(0deg) scale(.7); opacity: 0; }
+  12%  { opacity: .85; }
+  85%  { opacity: .55; }
+  100% { transform: translateY(-112vh) rotate(28deg) scale(1.15); opacity: 0; }
+}
+
+/* ============================================================
+   ✨  REVEAL ON SCROLL
+   ============================================================ */
+.reveal{
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(.2,.8,.3,1);
+}
+.reveal.in{ opacity: 1; transform: none; }
+
+/* ============================================================
+   💛  HERO
+   ============================================================ */
+.hero{
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 70px 0 60px;
+}
+
+.hero-card{
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  text-align: center;
+  padding: clamp(30px, 6vw, 74px) clamp(22px, 5vw, 64px);
+  border-radius: 40px;
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow:
+    0 46px 90px -46px rgba(205,165,65,.6),
+    0 0 0 10px rgba(255,255,255,.25),
+    inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+.hero-card::before,
+.hero-card::after{
+  content: "";
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  filter: blur(26px);
+  opacity: .6;
+  pointer-events: none;
+}
+.hero-card::before{ background: #FFE07A; top: -26px; left: -26px; }
+.hero-card::after { background: #FFD8A8; bottom: -26px; right: -26px; }
+
+.bow{
+  font-size: 1.7rem;
+  display: block;
+  margin-bottom: 6px;
+  animation: bob 3.6s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{ transform: translateY(0) rotate(-4deg); }
+  50%    { transform: translateY(-7px) rotate(4deg); }
+}
+
+.eyebrow{
+  font-size: clamp(.72rem, 2.4vw, .86rem);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+}
+
+h1{ margin: 0; font-weight: 500; }
+
+.script{
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 5vw, 2.4rem);
+  letter-spacing: .01em;
+  color: #8A7546;
+}
+
+.name{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.4rem, 12vw, 7.2rem);
+  line-height: .92;
+  margin: .08em 0 .22em;
+  background: linear-gradient(115deg, #F2B01E 0%, #DE9226 46%, #FFCE4D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 8px 22px rgba(235,175,60,.4));
+  padding-bottom: .08em;
+}
+
+.sub{
+  font-size: clamp(.95rem, 2.6vw, 1.08rem);
+  line-height: 1.85;
+  font-weight: 400;
+  color: #8A7546;
+  max-width: 44ch;
+  margin: 0 auto 30px;
+}
+
+.btn{
+  font-family: inherit;
+  font-weight: 600;
+  font-size: clamp(.88rem, 2.4vw, 1rem);
+  color: #6B4E13;
+  padding: 15px 34px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FFE68F, #F7C948 48%, #E8B03C);
+  background-size: 200% 200%;
+  box-shadow: 0 18px 34px -14px rgba(220,165,50,.9);
+  transition: transform .28s cubic-bezier(.2,.8,.3,1), box-shadow .28s, background-position .6s;
+  animation: shimmer 6s ease infinite;
+}
+@keyframes shimmer{
+  0%,100%{ background-position: 0% 50%; }
+  50%    { background-position: 100% 50%; }
+}
+.btn:hover{ transform: translateY(-3px) scale(1.04); box-shadow: 0 24px 40px -14px rgba(220,165,50,.95); }
+.btn:active{ transform: scale(.965); }
+
+.magic-note{
+  min-height: 1.6em;
+  margin: 22px auto 0;
+  max-width: 40ch;
+  font-size: clamp(.85rem, 2.4vw, .98rem);
+  font-weight: 500;
+  color: #B08B33;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.magic-note.show{ opacity: 1; transform: none; }
+
+/* ============================================================
+   🌼  SECTION HEADINGS
+   ============================================================ */
+section{ padding: clamp(64px, 10vw, 110px) 0; }
+
+.sec-head{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+.sec-head .orn{
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224,169,59,.7), transparent);
+}
+.sec-head h2{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+  font-weight: 400;
+  margin: 0;
+  background: linear-gradient(115deg, #F2B01E, #DE9226 60%, #FFCE4D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.hint{
+  text-align: center;
+  font-size: clamp(.82rem, 2.3vw, .94rem);
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin: 0 0 clamp(34px, 6vw, 54px);
+}
+
+/* ============================================================
+   📸  FLIP PHOTO CARDS
+   ============================================================ */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: clamp(18px, 2.8vw, 30px);
+}
+
+.card{
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  perspective: 1400px;
+  cursor: pointer;
+  outline: none;
+  transition: transform .4s cubic-bezier(.2,.8,.3,1);
+}
+.card:hover{ transform: translateY(-6px); }
+
+.card-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .85s cubic-bezier(.35,.05,.2,1);
+  border-radius: 24px;
+}
+.card.flipped .card-inner{ transform: rotateY(180deg); }
+
+.card-front,
+.card-back{
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.card-front{
+  display: flex;
+  flex-direction: column;
+  padding: 13px 13px 8px;
+  background: linear-gradient(180deg, #FFFFFF, #FFFDF3);
+  border: 1px solid rgba(255,255,255,.95);
+}
+.photo{
+  position: relative;
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(140deg, #FFF3C4 0%, #FFEDB8 52%, #FFE0A8 100%);
+}
+.photo .fallback{
+  font-size: 2.6rem;
+  opacity: .9;
+  filter: drop-shadow(0 6px 12px rgba(215,170,70,.4));
+}
+.photo img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-front figcaption{
+  text-align: center;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--ink-soft);
+  padding: 10px 4px 4px;
+}
+
+.card-back{
+  transform: rotateY(180deg);
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 28px 22px;
+  text-align: center;
+  background:
+    radial-gradient(120% 120% at 20% 0%, #FFFAE0 0%, transparent 55%),
+    linear-gradient(150deg, #FFE8A3, #FFF0BF 55%, #FFDCA0);
+  border: 1px solid rgba(255,255,255,.9);
+}
+.card-back .quote-mark{
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  line-height: .4;
+  color: rgba(255,255,255,.95);
+  text-shadow: 0 4px 14px rgba(205,160,60,.5);
+}
+.card-back p{
+  margin: 0;
+  font-size: clamp(.82rem, 2.3vw, .93rem);
+  line-height: 1.65;
+  font-weight: 600;
+  color: #7A6329;
+}
+.card-back .tap-back{
+  font-size: .64rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(150,120,55,.7);
+  font-weight: 600;
+}
+
+/* ============================================================
+   🎬  VIDEO
+   ============================================================ */
+.video-shell{
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: hidden;
+  background: linear-gradient(150deg, #FFF3C4, #FFEDB8 55%, #FFE0A8);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 46px 90px -46px rgba(205,165,65,.7);
+}
+.video-shell video{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: transparent;
+}
+.video-fallback{
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-content: center;
+  text-align: center;
+  padding: 30px;
+  font-weight: 600;
+  font-size: clamp(.85rem, 2.4vw, 1rem);
+  line-height: 1.7;
+  color: #93792F;
+  background:
+    radial-gradient(120% 120% at 30% 0%, #FFFBE8 0%, transparent 60%),
+    linear-gradient(150deg, #FFF3C4, #FFEDB8 55%, #FFE0A8);
+}
+.video-note{
+  text-align: center;
+  margin: 20px auto 0;
+  font-size: clamp(.82rem, 2.3vw, .92rem);
+  color: var(--ink-soft);
+  font-weight: 500;
+  letter-spacing: .04em;
+}
+
+/* ============================================================
+   🎵  SONG PLAYER
+   ============================================================ */
+.song-card{
+  max-width: 560px;
+  margin: 0 auto;
+  padding: clamp(26px, 5vw, 46px) clamp(22px, 5vw, 42px);
+  border-radius: 32px;
+  text-align: center;
+  background: rgba(255,255,255,.74);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 46px 90px -46px rgba(205,165,65,.8);
+}
+
+.disc{
+  width: 100px; height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  background:
+    radial-gradient(circle at 50% 50%,
+      #ffffff 0 13%, #FFF0BF 14% 23%, #FFD966 24% 45%,
+      #FFE8A3 46% 67%, #F7C948 68% 100%);
+  box-shadow:
+    0 18px 34px -14px rgba(220,165,50,.9),
+    inset 0 0 0 6px rgba(255,255,255,.4);
+}
+.disc.playing{ animation: spin 7s linear infinite; }
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+.song-title{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+  font-weight: 400;
+  margin: 0 0 4px;
+  background: linear-gradient(115deg, #F2B01E, #DE9226 60%, #FFCE4D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.song-sub{
+  margin: 0 0 22px;
+  font-size: .84rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.player-row{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.play-btn{
+  flex-shrink: 0;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #6B4E13;
+  display: grid;
+  place-items: center;
+  padding-left: 2px;
+  background: linear-gradient(140deg, #FFE68F, #F7C948 55%, #E8B03C);
+  box-shadow: 0 16px 30px -14px rgba(220,165,50,.95);
+  transition: transform .25s cubic-bezier(.2,.8,.3,1), box-shadow .25s;
+}
+.play-btn:hover{ transform: scale(1.07); }
+.play-btn:active{ transform: scale(.94); }
+.play-btn:disabled{ opacity: .5; cursor: not-allowed; }
+
+.player-body{ flex: 1; text-align: left; }
+
+.progress{
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(247,201,72,.32);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(200,160,60,.3);
+}
+.progress-fill{
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #FFE07A, #F7C948 55%, #E8B03C);
+  transition: width .15s linear;
+}
+.times{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--ink-soft);
+}
+
+.song-note{
+  margin: 20px 0 0;
+  font-size: clamp(.82rem, 2.4vw, .92rem);
+  font-weight: 500;
+  color: #B08B33;
+  min-height: 1.4em;
+}
+
+/* ============================================================
+   🎂  WISHES
+   ============================================================ */
+.wishes-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.wish{
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 22px 44px -30px rgba(205,165,65,.65);
+  transition: transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s;
+}
+.wish:hover{
+  transform: translateY(-6px) rotate(-.6deg);
+  box-shadow: 0 32px 56px -30px rgba(205,165,65,.8);
+}
+.wish .ico{
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  animation: bob 4.5s ease-in-out infinite;
+}
+.wish p{
+  margin: 0;
+  font-size: clamp(.88rem, 2.4vw, .96rem);
+  line-height: 1.72;
+  font-weight: 500;
+  color: #8A7546;
+}
+
+/* ============================================================
+   💌  LETTER
+   ============================================================ */
+.letter-paper{
+  position: relative;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: clamp(30px, 6vw, 66px) clamp(24px, 6vw, 64px);
+  border-radius: 28px;
+  background: linear-gradient(180deg, #FFFDF6, #FFF9E6);
+  box-shadow:
+    0 40px 80px -40px rgba(205,165,65,.65),
+    0 0 0 1px rgba(255,255,255,.95) inset,
+    0 0 0 8px rgba(255,255,255,.4);
+  transform: rotate(-.35deg);
+}
+.letter-paper::before{
+  content: "🌼";
+  position: absolute;
+  top: -20px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.9rem;
+  filter: drop-shadow(0 6px 12px rgba(215,170,70,.45));
+}
+.letter-paper h3{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.9rem, 6vw, 2.9rem);
+  font-weight: 400;
+  margin: 0 0 22px;
+  background: linear-gradient(115deg, #F2B01E, #DE9226 60%, #FFCE4D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.letter-paper p{
+  font-size: clamp(.93rem, 2.6vw, 1.04rem);
+  line-height: 2;
+  color: #7C6838;
+  margin: 0 0 18px;
+  font-weight: 400;
+}
+.letter-paper p:last-of-type{ margin-bottom: 0; }
+.signature{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.5rem, 4.5vw, 2rem);
+  color: #D99A2B;
+  text-align: right;
+  margin-top: 26px;
+}
+.seal{
+  display: grid;
+  place-items: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  margin: 26px auto 0;
+  background: linear-gradient(140deg, #FFE07A, #F7C948);
+  box-shadow: 0 14px 26px -12px rgba(220,165,50,.95), inset 0 -3px 8px rgba(0,0,0,.07);
+  font-size: 1.4rem;
+}
+
+/* ============================================================
+   💝  FINALE
+   ============================================================ */
+.finale{ text-align: center; }
+
+.envelope{
+  font-family: inherit;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 44px;
+  border-radius: 26px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,.95);
+  background: rgba(255,255,255,.74);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 30px 60px -34px rgba(205,165,65,.85);
+  transition: transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s;
+}
+.envelope:hover{ transform: translateY(-6px) scale(1.02); }
+.envelope .env-emoji{ font-size: 2.6rem; animation: bob 3.2s ease-in-out infinite; }
+.envelope .env-label{
+  font-size: .8rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.secret{
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .8s cubic-bezier(.2,.8,.3,1), opacity .8s ease, margin .8s;
+  margin-top: 0;
+}
+.secret.open{ max-height: 620px; opacity: 1; margin-top: 30px; }
+.secret-inner{
+  max-width: 660px;
+  margin: 0 auto;
+  padding: clamp(26px, 5vw, 48px);
+  border-radius: 26px;
+  background: linear-gradient(150deg, #FFF3C4, #FFEFB8 55%, #FFE0A8);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 34px 66px -34px rgba(205,165,65,.85);
+}
+.secret-inner p{
+  font-size: clamp(.95rem, 2.7vw, 1.08rem);
+  line-height: 2;
+  font-weight: 500;
+  color: #7C6838;
+  margin: 0 0 16px;
+}
+.secret-inner p:last-child{ margin: 0; }
+.secret-inner .big{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  color: #D99A2B;
+  line-height: 1.2;
+}
+
+/* ============================================================
+   🌙  FOOTER
+   ============================================================ */
+footer{
+  text-align: center;
+  padding: 60px 0 90px;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+footer .heart{ color: #E8B03C; }
+
+/* ============================================================
+   🔊  FLOATING MUSIC TOGGLE
+   ============================================================ */
+.audio-fab{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9000;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.95);
+  cursor: pointer;
+  font-size: 1.15rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 18px 34px -16px rgba(205,165,65,.9);
+  transition: transform .25s cubic-bezier(.2,.8,.3,1);
+}
+.audio-fab:hover{ transform: scale(1.08); }
+.audio-fab:active{ transform: scale(.94); }
+
+/* ============================================================
+   🎊  CONFETTI
+   ============================================================ */
+.confetti{
+  position: fixed;
+  top: 0; left: 0;
+  width: 9px; height: 13px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, opacity;
+  animation: confetti-fall var(--dur) cubic-bezier(.16,.62,.4,1) forwards;
+}
+@keyframes confetti-fall{
+  0%{
+    transform: translate(var(--x), var(--y)) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100%{
+    transform: translate(calc(var(--x) + var(--dx)), calc(var(--y) + 92vh))
+               rotate(var(--rot)) scale(.85);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   📱  RESPONSIVE + ACCESSIBILITY
+   ============================================================ */
+@media (max-width: 520px){
+  .sec-head .orn{ max-width: 40px; }
+  .letter-paper{ transform: none; }
+  .player-row{ gap: 12px; }
+  .play-btn{ width: 52px; height: 52px; }
+  .audio-fab{ width: 46px; height: 46px; font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     🎁 ENTRY OVERLAY — tap to start the music & open the gift
+     ============================================================ -->
+<div class="entry" id="entry">
+  <div class="entry-inner">
+    <span class="gift">🎁</span>
+    <h2>For Alina</h2>
+    <p>
+      I made a little something for your birthday.<br>
+      Tap below to open it 💛
+    </p>
+    <button class="btn" id="entryBtn">open your surprise ✨</button>
+    <p class="hint-small">turn your sound on 🔊</p>
+  </div>
+</div>
+
+<!-- floating glyphs background -->
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+<div class="page">
+
+  <!-- ============================================================
+       💛 HERO
+       ============================================================ -->
+  <header class="hero">
+    <div class="hero-card">
+      <span class="bow">🌼</span>
+      <p class="eyebrow">✦ for the girl who makes everything softer ✦</p>
+
+      <h1 class="script">Happy Birthday,</h1>
+      <h1 class="name" data-name>Alina</h1>
+
+      <p class="sub">
+        Today the world is a little brighter — because it's the day the most
+        beautiful soul was born. And somehow, out of everyone, I get to be the
+        one who loves her. 💛
+      </p>
+
+      <button class="btn" id="magicBtn">Tap for a little magic ✨</button>
+      <p class="magic-note" id="magicNote">…</p>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       📸 20 MEMORIES WITH HIDDEN MESSAGES
+       ============================================================ -->
+  <section id="memories">
+    <div class="sec-head reveal">
+      <span class="orn"></span>
+      <h2>All My Favourite Views</h2>
+      <span class="orn"></span>
+    </div>
+    <p class="hint reveal">20 little pieces of you — tap each photo, there's a secret hiding inside 🤍</p>
+
+    <div class="grid" id="gallery"></div>
+  </section>
+
+  <!-- ============================================================
+       🎬 OUR VIDEO
+       ============================================================ -->
+  <section id="film">
+    <div class="sec-head reveal">
+      <span class="orn"></span>
+      <h2>Our Little Film</h2>
+      <span class="orn"></span>
+    </div>
+    <p class="hint reveal">a few moments of us, kept forever 🎬</p>
+
+    <div class="video-shell reveal">
+      <video id="memoryVideo" controls playsinline preload="metadata"
+             poster="photos/video-poster.jpg">
+        <source src="WhatsApp Video 2026-11-16 at 10.45.04 PM.mp4" type="video/mp4">
+      </video>
+      <div class="video-fallback" id="videoFallback">
+        🎬<br>our memories will play here 💛
+      </div>
+    </div>
+    <p class="video-note">press play — this one always makes me smile 🤍</p>
+  </section>
+
+  <!-- ============================================================
+       🎵 OUR SONG
+       ============================================================ -->
+  <section id="song">
+    <div class="sec-head reveal">
+      <span class="orn"></span>
+      <h2>Our Song</h2>
+      <span class="orn"></span>
+    </div>
+    <p class="hint reveal">the one that sounds like you 🎶</p>
+
+    <div class="song-card reveal">
+      <div class="disc" id="disc">🎵</div>
+      <h3 class="song-title">For Alina</h3>
+      <p class="song-sub" id="songSub">playing for you 💛</p>
+
+      <div class="player-row">
+        <button class="play-btn" id="playBtn" aria-label="Pause our song">❚❚</button>
+        <div class="player-body">
+          <div class="progress" id="progress">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="times">
+            <span id="cur">0:00</span>
+            <span id="dur">0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="song-note" id="songNote">this one is for you, always 💛</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       🎂 BIRTHDAY WISHES
+       ============================================================ -->
+  <section id="wishes">
+    <div class="sec-head reveal">
+      <span class="orn"></span>
+      <h2>Wishes For You</h2>
+      <span class="orn"></span>
+    </div>
+    <p class="hint reveal">every single one of these is meant from the bottom of my heart</p>
+
+    <div class="wishes-grid">
+      <div class="wish reveal">
+        <span class="ico">🌼</span>
+        <p>May this year be as gentle with you as you have always been with everyone else.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">✨</span>
+        <p>May every dream you've ever whispered quietly to yourself finally find its way to you.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">☀️</span>
+        <p>May your mornings be slow, your coffee warm, and your heart impossibly light.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">🌻</span>
+        <p>May you always know — without a single doubt — how deeply and endlessly you are loved.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">🎈</span>
+        <p>May you laugh until your stomach hurts at least once every single week.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">🌙</span>
+        <p>May you sleep peacefully every night, knowing you are somebody's favourite person.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">🍀</span>
+        <p>May luck follow you everywhere — though honestly, the world is the lucky one to have you.</p>
+      </div>
+      <div class="wish reveal">
+        <span class="ico">💌</span>
+        <p>May you never doubt, even for a second, how much you matter to me.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       💌 THE LETTER
+       ============================================================ -->
+  <section id="letter">
+    <div class="sec-head reveal">
+      <span class="orn"></span>
+      <h2>A Letter For You</h2>
+      <span class="orn"></span>
+    </div>
+
+    <div class="letter-paper reveal">
+      <h3>My Alina,</h3>
+
+      <p>
+        I don't think you fully realise what happened to the world the day you were born.
+        It got quieter, in the best way. Softer. Warmer. Like someone turned the lights
+        down low and made everything feel like home.
+      </p>
+
+      <p>
+        And somehow — out of all the people, all the timing, all the tiny decisions that
+        had to line up perfectly — I got to be the one who knows you. The one who gets
+        your good mornings. The one who sees you laugh at your own jokes and cry at
+        movies you've already seen ten times.
+      </p>
+
+      <p>
+        Thank you for being gentle with me. For being patient. For choosing me on the
+        ordinary days, not just the beautiful ones. You have this quiet way of making
+        everything feel survivable, and I hope you know what a rare and precious thing
+        that is.
+      </p>
+
+      <p>
+        Today isn't just your birthday. It's the anniversary of the world getting its
+        very best thing. And I get to celebrate it beside you — which feels like the
+        luckiest thing that has ever happened to me.
+      </p>
+
+      <p>
+        Happy birthday, my favourite person. Here's to a year that loves you back
+        exactly as much as you deserve. 🌻
+      </p>
+
+      <p class="signature">always, yours 💛</p>
+      <div class="seal">💛</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       💝 FINALE
+       ============================================================ -->
+  <section class="finale">
+    <div class="sec-head reveal">
+      <span class="orn"></span>
+      <h2>One Last Thing</h2>
+      <span class="orn"></span>
+    </div>
+
+    <button class="envelope reveal" id="envBtn" aria-expanded="false" aria-controls="secret">
+      <span class="env-emoji">💌</span>
+      <span class="env-label">tap to open</span>
+    </button>
+
+    <div class="secret" id="secret">
+      <div class="secret-inner">
+        <p>If you ever wonder whether you're truly loved — come back and read this again.</p>
+        <p class="big">I'd choose you.<br>In every version of every life.</p>
+        <p>Happy birthday, my whole heart, Alina. 🎂💛</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       🌙 FOOTER
+       ============================================================ -->
+  <footer>
+    made with <span class="heart">💛</span> and an unreasonable amount of love — for
+    <span data-name>Alina</span>
+  </footer>
+
+</div>
+
+<!-- 🔊 floating music toggle -->
+<button class="audio-fab" id="audioFab" aria-label="Toggle music">🔊</button>
+
+<!-- 🎵 the song -->
+<audio id="ourSong" preload="auto" loop src="Elliot James Reay - I Think They Call This Love (Lyrics) (1).mp3"></audio>
+
+<script>
+/* ================================================================
+   ✏️  HER NAME
+   ================================================================ */
+const HER_NAME = "Alina";
+document.querySelectorAll('[data-name]').forEach(el => el.textContent = HER_NAME);
+document.title = `Happy Birthday, ${HER_NAME} 💛`;
+
+
+/* ================================================================
+   📸  THE 20 PHOTOS + HIDDEN MESSAGES
+   ================================================================ */
+const CARDS = [
+  {
+    photo: "photo1.jpeg", emoji: "🌼", caption: "the first hello",
+    message: "Alina, the very first time I saw you, my heart forgot how to be quiet. Honestly, it still hasn't learned."
+  },
+  {
+    photo: "photo2.jpeg", emoji: "😄", caption: "that laugh",
+    message: "You laugh with your whole body — head thrown back, eyes squeezed shut — and it is the prettiest thing I have ever seen."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.40 PM3.jpeg", emoji: "🤍", caption: "your soft heart",
+    message: "You care about people so quietly and so deeply. You make gentleness look like the strongest thing in the world."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.40 PM4.jpeg", emoji: "✨", caption: "your spark",
+    message: "The way your eyes light up when you talk about something you love — I could sit and watch that forever."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.41 PM5.jpeg", emoji: "🌙", caption: "my peace",
+    message: "You are the calm in every storm I did not even know I was carrying."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.41 PM6.jpeg", emoji: "☀️", caption: "just us",
+    message: "You make the most ordinary Tuesday feel like something worth remembering. That is a superpower, Alina."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.41 PM7.jpeg", emoji: "🌻", caption: "my brave girl",
+    message: "You are the bravest person I know — even on the days you don't feel like it. Especially on those days."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.42 PM8.jpeg", emoji: "🎶", caption: "kitchen dancer",
+    message: "You dance in the kitchen when you think no one is watching. I am always watching. Always smiling."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.42 PM9.jpeg", emoji: "💫", caption: "so seen",
+    message: "You have this gift of making everyone feel seen. Do you know how rare that is? You are rare."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.43 PM10.jpeg", emoji: "🧈", caption: "the day the world softened",
+    message: "The world got softer the day you were born. I am sure of it — I can feel it in the air around you."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.43 PM11.jpeg", emoji: "💌", caption: "every hello",
+    message: "You are my favourite hello and my hardest goodbye, every single time, without fail."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.43 PM12.jpeg", emoji: "🌼", caption: "because of you",
+    message: "You make me want to be a better person — not because you ask me to, but because you deserve one."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.44 PM13.jpeg", emoji: "🫂", caption: "your hugs",
+    message: "Your hugs fix things that words never could. I don't know how you do it. Please never stop."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.44 PM14.jpeg", emoji: "🍀", caption: "luck & timing",
+    message: "You are the reason I believe in timing, and luck, and every silly romantic thing I used to roll my eyes at."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.44 PM15.jpeg", emoji: "😤", caption: "morning face",
+    message: "Even your grumpy, sleepy, pre-coffee mornings are adorable. Especially those, honestly."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.44 PM16.jpeg", emoji: "☕", caption: "you remember",
+    message: "You remember the tiny things — my coffee order, my bad days, the songs I like. You are made of magic."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.45 PM17.jpeg", emoji: "💛", caption: "again & again",
+    message: "If I had to live this life a thousand times, I would find you faster in every single one."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.45 PM18.jpeg", emoji: "💖", caption: "my favourite",
+    message: "You are not just my girlfriend, Alina. You are my favourite person, my safest place, my best decision."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.45 PM19.jpeg", emoji: "🏡", caption: "your future",
+    message: "You deserve a life that feels like a warm hug. I want to spend mine helping you build exactly that."
+  },
+  {
+    photo: "WhatsApp Image 2026-11-16 at 9.08.45 PM20.jpeg", emoji: "🎂", caption: "happy birthday, my love",
+    message: "And today, on your birthday — know that you are loved beyond measure. Today, tomorrow, and every day after."
+  }
+];
+
+/* ---------- render the cards ---------- */
+(function renderGallery(){
+  const gallery = document.getElementById('gallery');
+
+  gallery.innerHTML = CARDS.map(c => `
+    <figure class="card reveal">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="photo">
+            <span class="fallback">${c.emoji}</span>
+            <img src="${c.photo}" alt="${c.caption}" loading="lazy"
+                 onerror="this.style.display='none'">
+          </div>
+          <figcaption>${c.caption}</figcaption>
+        </div>
+        <div class="card-back">
+          <span class="quote-mark">“</span>
+          <p>${c.message}</p>
+          <span class="tap-back">tap to close</span>
+        </div>
+      </div>
+    </figure>
+  `).join('');
+
+  gallery.querySelectorAll('.card').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Reveal a hidden message');
+
+    const flip = () => card.classList.toggle('flipped');
+    card.addEventListener('click', flip);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        flip();
+      }
+    });
+  });
+})();
+
+
+/* ================================================================
+   🎈  FLOATING GLYPHS BACKGROUND
+   ================================================================ */
+(function floatingGlyphs(){
+  const sky = document.getElementById('sky');
+  const glyphs = ['🌼','✨','💛','🌻','🍯','🌾','⭐','🤍'];
+  const count = window.innerWidth < 640 ? 14 : 24;
+
+  for (let i = 0; i < count; i++){
+    const s = document.createElement('span');
+    s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = (12 + Math.random() * 16) + 'px';
+    s.style.animationDuration = (16 + Math.random() * 16) + 's';
+    s.style.animationDelay = (-Math.random() * 30) + 's';
+    s.style.opacity = 0.35 + Math.random() * 0.45;
+    sky.appendChild(s);
+  }
+})();
+
+
+/* ================================================================
+   🎊  CONFETTI
+   ================================================================ */
+const CONFETTI_COLORS = ['#F7C948','#FFE07A','#E0A93B','#FFF3C4','#FFD8A8','#FFFFFF','#FFDE85'];
+
+function confettiBurst(x, y, amount = 46){
+  for (let i = 0; i < amount; i++){
+    const p = document.createElement('i');
+    p.className = 'confetti';
+    p.style.background = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+    p.style.setProperty('--x', x + 'px');
+    p.style.setProperty('--y', y + 'px');
+    p.style.setProperty('--dx', (Math.random() - 0.5) * 460 + 'px');
+    p.style.setProperty('--rot', (Math.random() * 900 - 450) + 'deg');
+    p.style.setProperty('--dur', (1.6 + Math.random() * 1.6) + 's');
+    p.style.width = (6 + Math.random() * 7) + 'px';
+    p.style.height = (9 + Math.random() * 9) + 'px';
+    if (Math.random() > 0.7) p.style.borderRadius = '50%';
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 3600);
+  }
+}
+
+function confettiRain(amount = 90){
+  for (let i = 0; i < amount; i++){
+    setTimeout(() => {
+      confettiBurst(Math.random() * window.innerWidth, -20 - Math.random() * 120, 1);
+    }, i * 28);
+  }
+}
+
+
+/* ================================================================
+   🎵  MUSIC — AUTOPLAY ON OPEN (with a graceful fallback)
+   ================================================================ */
+const audio    = document.getElementById('ourSong');
+const entry    = document.getElementById('entry');
+const entryBtn = document.getElementById('entryBtn');
+const audioFab = document.getElementById('audioFab');
+const playBtn  = document.getElementById('playBtn');
+const disc     = document.getElementById('disc');
+const fill     = document.getElementById('progressFill');
+const bar      = document.getElementById('progress');
+const cur      = document.getElementById('cur');
+const dur      = document.getElementById('dur');
+const songNote = document.getElementById('songNote');
+const songSub  = document.getElementById('songSub');
+
+let userPaused = false;   // true only if SHE paused it on purpose
+
+function hideEntry(){ entry.classList.add('hide'); }
+
+function startMusic(){
+  if (!audio) return;
+  audio.play()
+    .then(() => { hideEntry(); })
+    .catch(() => { /* browser blocked it — overlay stays as the tap-to-start */ });
+}
+
+/* 1️⃣ Try to autoplay the moment the page loads */
+window.addEventListener('load', () => {
+  setTimeout(startMusic, 250);
+});
+
+/* 2️⃣ Her first tap anywhere also starts the song (covers autoplay blocks) */
+document.addEventListener('pointerdown', function firstTouch(){
+  if (!userPaused && audio.paused) startMusic();
+  document.removeEventListener('pointerdown', firstTouch);
+}, { once: true });
+
+/* 3️⃣ The overlay button */
+entryBtn.addEventListener('click', () => {
+  userPaused = false;
+  startMusic();
+  hideEntry();
+});
+
+/* ---------- shared play / pause control ---------- */
+function toggleMusic(){
+  if (audio.paused){
+    userPaused = false;
+    audio.play().catch(() => {});
+  } else {
+    userPaused = true;
+    audio.pause();
+  }
+}
+playBtn.addEventListener('click', toggleMusic);
+audioFab.addEventListener('click', toggleMusic);
+
+/* ---------- keep all the UI in sync ---------- */
+const fmt = s => {
+  if (!isFinite(s) || s < 0) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+};
+
+audio.addEventListener('play', () => {
+  playBtn.textContent = '❚❚';
+  playBtn.setAttribute('aria-label', 'Pause our song');
+  disc.classList.add('playing');
+  audioFab.textContent = '🔊';
+  audioFab.setAttribute('aria-label', 'Pause music');
+  songSub.textContent = 'playing for you 💛';
+  songNote.textContent = 'our song is playing… listen closely 💛';
+  hideEntry();
+});
+
+audio.addEventListener('pause', () => {
+  playBtn.textContent = '▶';
+  playBtn.setAttribute('aria-label', 'Play our song');
+  disc.classList.remove('playing');
+  audioFab.textContent = '🔇';
+  audioFab.setAttribute('aria-label', 'Play music');
+  songSub.textContent = 'paused 🤍';
+  songNote.textContent = 'paused — press play, this one is for you 🤍';
+});
+
+audio.addEventListener('ended', () => {
+  songNote.textContent = 'play it again? I never get tired of it 🎶';
+  fill.style.width = '0%';
+  cur.textContent = '0:00';
+});
+
+audio.addEventListener('loadedmetadata', () => {
+  dur.textContent = fmt(audio.duration);
+});
+
+audio.addEventListener('timeupdate', () => {
+  if (audio.duration){
+    fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+  }
+  cur.textContent = fmt(audio.currentTime);
+});
+
+bar.addEventListener('click', e => {
+  if (!audio.duration) return;
+  const r = bar.getBoundingClientRect();
+  const pct = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+  audio.currentTime = pct * audio.duration;
+});
+
+audio.addEventListener('error', () => {
+  songNote.textContent = 'add your song at music/our-song.mp3 and it will play right here 💛';
+  songSub.textContent = 'no song file yet';
+  playBtn.disabled = true;
+  audioFab.textContent = '🔇';
+});
+
+
+/* ================================================================
+   ✨  HERO MAGIC BUTTON
+   ================================================================ */
+(function magicButton(){
+  const btn  = document.getElementById('magicBtn');
+  const note = document.getElementById('magicNote');
+
+  const lines = [
+    "You are, without question, my favourite person on this entire planet. 🌍",
+    "Somewhere out there, a version of me is thanking the universe for you. 🥰",
+    "The world got its very best thing the day you were born, Alina. 🌼",
+    "I hope today feels exactly like you make me feel — warm, and safe, and home. 🏡",
+    "If being loved by me is a gift, then loving you is mine. 💛",
+    "You deserve every good thing, and I plan on being one of them. ✨",
+    "You're not just my favourite — you're my favourite by a very wide margin. 💫",
+    "Twenty photos, one video, one song — and still not enough to explain you. 💌"
+  ];
+  let last = -1;
+
+  btn.addEventListener('click', () => {
+    const r = btn.getBoundingClientRect();
+    confettiBurst(r.left + r.width / 2, r.top + r.height / 2, 60);
+
+    let i;
+    do { i = Math.floor(Math.random() * lines.length); } while (i === last && lines.length > 1);
+    last = i;
+
+    note.classList.remove('show');
+    void note.offsetWidth;
+    note.textContent = lines[i];
+    note.classList.add('show');
+  });
+})();
+
+
+/* ================================================================
+   🎬  VIDEO FALLBACK
+   ================================================================ */
+(function memoryVideo(){
+  const video    = document.getElementById('memoryVideo');
+  const fallback = document.getElementById('videoFallback');
+  const source   = video.querySelector('source');
+
+  const showFallback = () => {
+    fallback.style.display = 'grid';
+    video.style.display = 'none';
+  };
+
+  if (source) source.addEventListener('error', showFallback);
+  video.addEventListener('error', showFallback);
+})();
+
+
+/* ================================================================
+   💝  FINALE ENVELOPE
+   ================================================================ */
+(function envelope(){
+  const btn    = document.getElementById('envBtn');
+  const secret = document.getElementById('secret');
+  const label  = btn.querySelector('.env-label');
+
+  btn.addEventListener('click', () => {
+    const open = secret.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    label.textContent = open ? 'tap to close' : 'tap to open';
+    btn.querySelector('.env-emoji').textContent = open ? '💛' : '💌';
+
+    if (open){
+      const r = btn.getBoundingClientRect();
+      confettiBurst(r.left + r.width / 2, r.top + r.height / 2, 70);
+      setTimeout(() => confettiRain(60), 220);
+    }
+  });
+})();
+
+
+/* ================================================================
+   ✨  SCROLL REVEAL
+   ================================================================ */
+(function revealOnScroll(){
+  const items = document.querySelectorAll('.reveal');
+
+  if (!('IntersectionObserver' in window)){
+    items.forEach(el => el.classList.add('in'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting){
+        entry.target.style.transitionDelay = (i % 6) * 70 + 'ms';
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+
+
+/* ================================================================
+   🎉  CONFETTI ON OPEN
+   ================================================================ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    confettiBurst(window.innerWidth / 2, window.innerHeight * 0.32, 55);
+  }, 900);
+});
+</script>
+
+</body>
+</html>
